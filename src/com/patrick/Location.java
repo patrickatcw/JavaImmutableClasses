@@ -20,8 +20,10 @@ public class Location {
         //manually set our exits up
         //this.exits = new HashMap<String, Integer>();
         //step 2 set this.exits = to exits
-        this.exits = exits;
-        this.exits.put("Q", 0); //ability to quit out of a particular location
+        //this.exits = exits;
+        //step 8 change above to....
+        this.exits = new HashMap<String, Integer>(exits);
+        //step 9 back to main to test run
     }
 
     /*//step 3, we do not need these anymore
