@@ -75,6 +75,8 @@ public class Main {
         int loc = 1;
         while (true) {
             System.out.println(locations.get(loc).getDesription());
+            //step 7 a potential problem here....someone could remove
+            //step 8 to location class
             if (loc==0) {
                 break;
             }
