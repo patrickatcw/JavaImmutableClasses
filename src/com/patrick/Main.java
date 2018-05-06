@@ -1,6 +1,13 @@
 package com.patrick;
 //start with adventuregamechallenge code
-
+/*
+Immutable means that once the constructor for an object has completed
+execution that instance can't be altered. This is useful as it means you can
+pass references to the object around, without worrying that someone else
+is going to change its contents. Especially when dealing with concurrency,
+there are no locking issues with objects that never change
+ */
+//https://docs.oracle.com/javase/tutorial/essential/concurrency/imstrat.html
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -16,28 +23,45 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         //locations
-        locations.put(0, new Location(0, "You are sitting in front of a computer learning Java"));
-        locations.put(1, new Location(1, "You are standing by a small building"));
-        locations.put(2, new Location(2, "You are on a hill"));
-        locations.put(3, new Location(3, "You are inside a building"));
-        locations.put(4, new Location(4, "You are by a stream"));
-        locations.put(5, new Location(5, "You are in a scary forest"));
+        //step 6 move these down to each location
+        //       locations.put(0, new Location(0, "You are sitting in front of a computer learning Java"));
+//        locations.put(1, new Location(1, "You are standing by a small building"));
+//        locations.put(2, new Location(2, "You are on a hill"));
+//        locations.put(3, new Location(3, "You are inside a building"));
+//        locations.put(4, new Location(4, "You are by a stream"));
+//        locations.put(5, new Location(5, "You are in a scary forest"));
 
+        //step 4 create a temporary map that are going be our exits, fixes errors
+        Map<String, Integer> tempExit = new HashMap<String, Integer>();
+        locations.put(0, new Location(0, "You are sitting in front of a computer learning Java",tempExit));
+        tempExit.put("W", 2); //changed through edit find replace
         //exits for each location
-        locations.get(1).addExit("W", 2);
-        locations.get(1).addExit("E", 3);
-        locations.get(1).addExit("S", 4);
-        locations.get(1).addExit("N", 5);
+        //step 5 put tempExit = new HashMap<String, Integer>(); in above each
+        //below
+        tempExit.put("E", 3);
+        tempExit.put("S", 4);
+        tempExit.put("N", 5);
+        locations.put(1, new Location(1, "You are standing by a small building",tempExit));
 
-        locations.get(2).addExit("N", 5);
+        tempExit = new HashMap<String, Integer>();
+        tempExit.put("N", 5);
+        locations.put(2, new Location(2, "You are on a hill",tempExit));
 
-        locations.get(3).addExit("W", 1);
+        tempExit = new HashMap<String, Integer>();
+        tempExit.put("W", 1);
+        locations.put(3, new Location(3, "You are inside a building",tempExit));
 
-        locations.get(4).addExit("N", 1);
-        locations.get(4).addExit("W", 2);
+        tempExit = new HashMap<String, Integer>();
+        tempExit.put("N", 1);
+        tempExit.put("W", 2);
+        locations.put(4, new Location(4, "You are by a stream",tempExit));
 
-        locations.get(5).addExit("S", 1);
-        locations.get(5).addExit("W", 2);
+        tempExit = new HashMap<String, Integer>();
+        tempExit.put("S", 1);
+        tempExit.put("W", 2);
+        locations.put(5, new Location(5, "You are in a scary forest",tempExit));
+
+        //step 6 run to make sure working....yes
 
         //create a map for vocabulary
         Map<String, String> vocabulary = new HashMap<String, String>();
