@@ -12,18 +12,26 @@ public class Location {
     private final Map<String, Integer> exits;
 
     //constructor, for location id and description
-    public Location(int locationID, String desription) {
+    //public Location(int locationID, String desription) {
+    //step 1 add map for exits
+    public Location(int locationID, String desription, Map<String, Integer> exits) {
         this.locationID = locationID;
         this.desription = desription;
         //manually set our exits up
-        this.exits = new HashMap<String, Integer>();
+        //this.exits = new HashMap<String, Integer>();
+        //step 2 set this.exits = to exits
+        this.exits = exits;
+        this.exits.put("Q", 0); //ability to quit out of a particular location
     }
 
+    /*//step 3, we do not need these anymore
     //method for adding exits
     public void addExit(String direction, int location){
         exits.put(direction, location);
 
-    }
+    }*/
+
+    //step 4 go back to main to fix errors for location and addExit
 
     //getters for all
     public int getLocationID() {
