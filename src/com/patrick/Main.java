@@ -77,6 +77,8 @@ public class Main {
             System.out.println(locations.get(loc).getDesription());
             //step 7 a potential problem here....someone could remove
             //step 8 to location class
+            //step 9 back here to test run this change, now class is fully immutable
+            tempExit.remove("S");
             if (loc==0) {
                 break;
             }
